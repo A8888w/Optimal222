@@ -137,7 +137,7 @@ with st.sidebar:
         os.environ["GOOGLE_API_KEY"] = google_api_key
 
         # Initialize ChatGroq with the provided Groq API key
-        llm = ChatGroq(groq_api_key=groq_api_key, model_name="Llama-2-70b-chat-hf")
+        llm = ChatGroq(groq_api_key=groq_api_key, model_name="Meta-Llama-3-70B-Instruct")
 
         # تعريف القالب الأساسي للدردشة
         def create_chat_prompt():
