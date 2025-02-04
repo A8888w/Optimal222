@@ -142,14 +142,9 @@ with st.sidebar:
         # تعريف القالب الأساسي للدردشة
         def create_chat_prompt():
             return PromptTemplate(
-                template=,
-                input_variables=["context", "input"]
-            )
-
-        def create_custom_chain(llm, prompt):
-            """إنشاء سلسلة معالجة المستندات"""
-            return create_stuff_documents_chain("system", """
-            You are a helpful assistant for Basrah Gas Company (BGC). Your task is to answer questions based on the provided context about BGC. The context is supplied as a documented resource (e.g., a multi-page manual or database) that is segmented by pages. Follow these rules strictly:
+                template=""" 
+             
+           System You are a helpful assistant for Basrah Gas Company (BGC). Your task is to answer questions based on the provided context about BGC. The context is supplied as a documented resource (e.g., a multi-page manual or database) that is segmented by pages. Follow these rules strictly:
 
             1. **Language Handling:**
                - If the question is in English, answer in English.
@@ -210,8 +205,15 @@ with st.sidebar:
                - Always double-check that your answer strictly adheres to the information found on the relevant page in the context.
 
             By following these guidelines, you will provide accurate, context-based answers while maintaining clarity, professionalism, and consistency with the user’s language preferences.
-"""
 
+
+                """,
+                input_variables=["context", "input"]
+            )
+
+        def create_custom_chain(llm, prompt):
+            """إنشاء سلسلة معالجة المستندات"""
+            return create_stuff_documents_chain(
                 llm=llm,
                 prompt=prompt
             )
